@@ -9,6 +9,12 @@ import { HeaderComponent } from './components/header/header.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { DialogComponent } from './components/dialog/dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field'
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+
+
+
   
 
 
@@ -26,6 +32,9 @@ import {MatFormFieldModule} from '@angular/material/form-field'
     MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

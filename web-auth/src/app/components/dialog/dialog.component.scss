@@ -1,0 +1,36 @@
+.mat-dialog{
+    height: 500px;
+    width: 350px;
+    
+    .mat-dialog-area{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        height: 100%;
+        margin: 40px;
+
+
+        .mat-dialog-img{
+            height: 25px;
+            width: 25px;
+        }
+        
+        .example-form {
+            min-width: 150px;
+            max-width: 500px;
+            width: 100%;
+          }
+          
+          .example-full-width {
+            width: 100%;
+          }
+
+        .mat-dialog-content{
+            height: 100px;
+        }
+    }
+
+
+}
