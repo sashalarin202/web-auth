@@ -5,11 +5,10 @@
     .mat-dialog-area{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
 
         height: 100%;
-        margin: 40px;
+        padding: 80px 40px;
 
 
         .mat-dialog-img{
@@ -27,9 +26,11 @@
             width: 100%;
           }
 
-        .mat-dialog-content{
-            height: 100px;
+        .mat-dialog-btn{
+            height: 50px;
+            width: 100%;
         }
+
     }
 
 

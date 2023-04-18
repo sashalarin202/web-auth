@@ -3,7 +3,7 @@
         <div>
             <img  class="mat-dialog-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy_brzbIf-LQQmVl0W2353cshz4J2tRnJ9pV0lqqcONfcIeuiV_XGTkACqnlFl0I6oNd4&usqp=CAU" alt="">
         </div>
-        <div mat-dialog-content class="mat-dialog-content">Log in to continue</div>
+        <p>Log in to continue</p>
         <form class="example-form">
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
@@ -16,14 +16,15 @@
               </mat-error>
             </mat-form-field>
           </form>
-          <div class="example-container">
-            <mat-form-field appearance="fill">
-              <mat-label>Enter your password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-            </mat-form-field>
-          </div>
+          <form class="example-form">
+            <mat-form-field appearance="fill" class="example-full-width">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'">
+                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+              </mat-form-field>
+        </form>
+        <button mat-raised-button color="primary" class="mat-dialog-btn">Continue</button>
     </div>
 </div>
