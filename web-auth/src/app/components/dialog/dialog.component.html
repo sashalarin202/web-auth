@@ -8,12 +8,12 @@
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
               <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
                 Please enter a valid email address
               </mat-error>
               <mat-error *ngIf="emailFormControl.hasError('required')">
                 Email is <strong>required</strong>
-              </mat-error>
+              </mat-error> -->
             </mat-form-field>
           </form>
           <form class="example-form">
@@ -26,5 +26,13 @@
               </mat-form-field>
         </form>
         <button mat-raised-button color="primary" class="mat-dialog-btn">Continue</button>
+        <div class="mat-dialog-singUp">
+            <p>Don't nave an account?<a href="/"><b> Sign Up</b></a></p>
+        </div>
+        <button mat-raised-button class="mat-dialog-btn mat-dialog-googleBtn">
+            <div class="wrapper">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="no" width="20px" height="20px">
+                <p>Continue with Google</p></div>
+        </button>
     </div>
 </div>
