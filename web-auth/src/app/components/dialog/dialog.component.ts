@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog',
@@ -9,8 +10,8 @@ import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 export class DialogComponent implements OnInit{
   hide: boolean = true;
   signInform: FormGroup;
-  constructor(private fb: FormBuilder) { }
-  
+  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: string) { }
+
   ngOnInit(){
     this.signInform = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -20,8 +21,5 @@ export class DialogComponent implements OnInit{
 }
 
 export interface DialogInterface {
-  cancelButtonLabel: string;
-  confirmButtonLabel: string;
   dialogHeader: string;
-  dialogContent: string;
 }

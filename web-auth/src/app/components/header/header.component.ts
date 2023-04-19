@@ -14,13 +14,10 @@ export class HeaderComponent {
 
     const dialogInterface: DialogInterface = {
       dialogHeader: 'I am created by Reusable dialog',
-      dialogContent: 'I am second dialog',
-      cancelButtonLabel: 'Cancel',
-      confirmButtonLabel: 'Submit',
     };
 
     this.dialog.open(DialogComponent,{
-      data: dialogInterface,
+      data: dialogInterface.dialogHeader,
     });
   }
 }
