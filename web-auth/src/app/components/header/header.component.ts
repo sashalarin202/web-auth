@@ -10,7 +10,7 @@ import { DialogComponent, DialogInterface } from '../dialog/dialog.component';
 export class HeaderComponent {
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
+  openSignInDialog() {
 
     const dialogInterface: DialogInterface = {
       dialogHeader: 'I am created by Reusable dialog',
@@ -20,7 +20,6 @@ export class HeaderComponent {
     };
 
     this.dialog.open(DialogComponent,{
-      width: '300px',
       data: dialogInterface,
     });
   }
