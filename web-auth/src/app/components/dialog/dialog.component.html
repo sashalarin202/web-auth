@@ -1,7 +1,7 @@
 <div class="mat-dialog">
     <div class="mat-dialog-area">
         <div>
-            <img class="mat-dialog-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy_brzbIf-LQQmVl0W2353cshz4J2tRnJ9pV0lqqcONfcIeuiV_XGTkACqnlFl0I6oNd4&usqp=CAU" alt="">
+          <img class="mat-dialog-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy_brzbIf-LQQmVl0W2353cshz4J2tRnJ9pV0lqqcONfcIeuiV_XGTkACqnlFl0I6oNd4&usqp=CAU" alt="">
         </div>
         <p>Log in to continue</p>
         <form [formGroup]="signInform" class="example-form" >
@@ -11,7 +11,8 @@
               <mat-error *ngIf="signInform.controls['email'].errors?.['email'] && !signInform.controls['email'].hasError('required')">
                 Please enter a valid email address
               </mat-error>
-              <mat-error *ngIf="signInform.controls['email'].errors?.['required']"> 
+              <mat-hint></mat-hint>
+              <mat-error *ngIf="signInform.controls['email'].errors?.['required'] || signInform.controls['email'].value"> 
                 Email is <strong>required</strong>
               </mat-error>
             </mat-form-field>
@@ -22,7 +23,7 @@
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
               <mat-error *ngIf="signInform.controls['password'].errors?.['required']"> 
-                Email is <strong>required</strong>
+                Password is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </form>
