@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -9,13 +9,12 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DialogComponent {
   hide: boolean = true;
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
-  
-
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  passwordFormControl = new FormControl('', [Validators.required]);
-  // signInForm = new FormGroup({
-  //   emailFormControl: new FormControl('', [Validators.required, Validators.email])
-  //   passwordFormControl: new FormControl('', [Validators.required, Validators.email ])
-  // });
+  signInform: FormGroup = this.fb.group({
+    'email': ['', Validators.required, Validators.email],
+    'password': ['', Validators.required]
+  });
 }
