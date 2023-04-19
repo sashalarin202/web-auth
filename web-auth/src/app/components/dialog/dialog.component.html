@@ -1,32 +1,31 @@
 <div class="mat-dialog">
     <div class="mat-dialog-area">
         <div>
-            <img  class="mat-dialog-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy_brzbIf-LQQmVl0W2353cshz4J2tRnJ9pV0lqqcONfcIeuiV_XGTkACqnlFl0I6oNd4&usqp=CAU" alt="">
+            <img class="mat-dialog-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy_brzbIf-LQQmVl0W2353cshz4J2tRnJ9pV0lqqcONfcIeuiV_XGTkACqnlFl0I6oNd4&usqp=CAU" alt="">
         </div>
         <p>Log in to continue</p>
         <form [formGroup]="signInform" class="example-form" >
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
               <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
-              <mat-error 
-              *ngIf="signInform.controls['email'].touched && signInform.controls['email'].errors?.['email']"
-              >
+              <mat-error *ngIf="signInform.controls['email'].errors?.['email'] && !signInform.controls['email'].hasError('required')">
                 Please enter a valid email address
               </mat-error>
-              <mat-error *ngIf="signInform.controls['email'].touched && signInform.controls['email'].errors?.['required']">
+              <mat-error *ngIf="signInform.controls['email'].errors?.['required']"> 
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+              <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="signInform.controls['password'].errors?.['required']"> 
                 Email is <strong>required</strong>
               </mat-error>
             </mat-form-field>
           </form>
-          <form class="example-form" [formGroup]="signInform">
-            <mat-form-field appearance="fill" class="example-full-width">
-                <mat-label>Enter your password</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-              </mat-form-field>
-        </form>
         <button mat-raised-button color="primary" class="mat-dialog-btn">Continue</button>
         <div class="mat-dialog-singUp">
             <p>Don't nave an account?<a href="/"><b> Sign Up</b></a></p>

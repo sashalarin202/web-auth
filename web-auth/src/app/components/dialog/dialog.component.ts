@@ -1,20 +1,20 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss']
 })
-export class DialogComponent {
+export class DialogComponent implements OnInit{
   hide: boolean = true;
-  constructor(
-    private fb: FormBuilder
-  ) { }
+  signInform: FormGroup;
+  constructor(private fb: FormBuilder) { }
 
-  signInform: FormGroup = this.fb.group({
-    'email': ['', Validators.required, Validators.email],
-    'password': ['', Validators.required]
-  });
+  ngOnInit(){
+    this.signInform = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
 }
