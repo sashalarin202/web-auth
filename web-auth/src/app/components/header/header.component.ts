@@ -11,13 +11,24 @@ export class HeaderComponent {
   constructor(public dialog: MatDialog) {}
 
   openSignInDialog() {
-
     const dialogInterface: DialogInterface = {
-      dialogHeader: 'I am created by Reusable dialog',
+      title: 'Log in',
+      confirmPassword: false,
     };
 
     this.dialog.open(DialogComponent,{
-      data: dialogInterface.dialogHeader,
+      data: dialogInterface,
+    });
+  }
+
+  openSignUpDialog() {
+    const dialogInterface: DialogInterface = {
+      title: 'Sign Up',
+      confirmPassword: true,
+    };
+
+    this.dialog.open(DialogComponent,{
+      data: dialogInterface,
     });
   }
 }

@@ -9,17 +9,21 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogComponent implements OnInit{
   hide: boolean = true;
+  hideConfirm: boolean = true;
   signInform: FormGroup;
-  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: string) { }
+  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA)
+    public data: {title: string, confirmPassword:boolean}) { }
 
   ngOnInit(){
     this.signInform = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
     });
   }
 }
 
 export interface DialogInterface {
-  dialogHeader: string;
+  title: string;
+  confirmPassword: boolean;
 }
