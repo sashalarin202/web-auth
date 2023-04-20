@@ -18,9 +18,17 @@ export class DialogComponent implements OnInit{
     this.signInform = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
     });
   }
+
+  isButtonDisable() {
+    return this.signInform.controls['password'].errors?.['required']||
+    this.signInform.controls['email'].errors?.['required'] ||
+    this.signInform.controls['email'].errors?.['email'] ||
+    this.data.title === 'Sign Up' &&
+    this.signInform.controls['confirmPassword'].errors?.['required']
+    }
 }
 
 export interface DialogInterface {
