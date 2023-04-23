@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent, DialogInterface } from '../dialog/dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,27 +9,29 @@ import { DialogComponent, DialogInterface } from '../dialog/dialog.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private router: Router) {}
 
   openSignInDialog() {
-    const dialogInterface: DialogInterface = {
-      title: 'Log in',
-      confirmPassword: false,
-    };
-
-    this.dialog.open(DialogComponent,{
-      data: dialogInterface,
-    });
+    this.router.navigate(['/sign-in'])
+    this.openDialog('Log in', false);
   }
 
   openSignUpDialog() {
+    this.openDialog('Sign Up', true);
+  }
+
+  private openDialog(title: string, confirmPassword: boolean) {
     const dialogInterface: DialogInterface = {
-      title: 'Sign Up',
-      confirmPassword: true,
+      title: title,
+      confirmPassword: confirmPassword,
     };
 
-    this.dialog.open(DialogComponent,{
+    let dialogRef = this.dialog.open(DialogComponent, {
       data: dialogInterface,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.router.navigate(['/mainPage'])
     });
   }
 }
