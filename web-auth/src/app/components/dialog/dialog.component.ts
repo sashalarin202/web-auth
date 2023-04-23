@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -9,6 +9,11 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent implements OnInit {
+
+  emailControl: AbstractControl | null;
+  passwordControl: AbstractControl | null;
+  confirmPasswordControl: AbstractControl | null;
+
   hide: boolean = true;
   hideConfirm: boolean = true;
   signInform: FormGroup;
@@ -22,18 +27,24 @@ export class DialogComponent implements OnInit {
 
   ngOnInit() {
     this.signInform = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(/^[\w.]+@\w+$/)]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     });
+
+    this.emailControl = this.signInform.get('email');
+    this.passwordControl = this.signInform.get('password');
+    this.confirmPasswordControl = this.signInform.get('confirmPassword');
   }
 
   isButtonDisable() {
-    return this.signInform.controls['password'].errors?.['required']||
-    this.signInform.controls['email'].errors?.['required'] ||
-    this.signInform.controls['email'].errors?.['email'] ||
-    this.data.title === 'Sign Up' &&
-    this.signInform.controls['confirmPassword'].errors?.['required']
+    const emailErrors = this.emailControl?.errors;
+    const passwordErrors = this.passwordControl?.errors;
+    const confirmPasswordErrors = this.confirmPasswordControl?.errors;
+    return passwordErrors?.['required'] ||
+      emailErrors?.['required'] ||
+      emailErrors?.['email'] ||
+      (this.data.title === 'Sign Up' && confirmPasswordErrors?.['required']);
   }
 }
 
