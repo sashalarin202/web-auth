@@ -11,6 +11,16 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
   constructor(public dialog: MatDialog, private router: Router) {}
 
+  // Handling URL without any component (SignInComponent/SingUpCopmonent)
+  ngOnInit(): void {
+    const url = window.location.href;
+    if (url.includes('/sign-in')) {
+      this.openDialog('Log in', false);
+    }if (url.includes('/sign-up')) {
+      this.openDialog('Sign Up', true); 
+    }
+  }
+
   openSignInDialog() {
     this.router.navigate(['/sign-in'])
     this.openDialog('Log in', false);
