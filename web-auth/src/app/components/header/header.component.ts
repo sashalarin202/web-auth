@@ -38,6 +38,7 @@ export class HeaderComponent {
 
     let dialogRef = this.dialog.open(DialogComponent, {
       data: dialogInterface,
+      panelClass: 'custom-dialog'
     });
 
     dialogRef.afterClosed().subscribe(result => {

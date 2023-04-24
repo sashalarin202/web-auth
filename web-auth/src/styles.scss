@@ -30,3 +30,7 @@ a {
 ul {
   list-style: none;
 }
+
+.custom-dialog .mat-mdc-dialog-surface{
+  border-radius: 15px !important;
+}
