@@ -32,32 +32,17 @@
                 Password is <strong>required</strong>
               </mat-hint>
             </mat-form-field>
-            <mat-form-field *ngIf="data.confirmPassword" appearance="fill" class="example-full-width">
-              <mat-label>Confirm your password</mat-label>
-              <input matInput [type]="hideConfirm ? 'password' : 'text'" formControlName="confirmPassword">
-              <button 
-                type="button" 
-                mat-icon-button matSuffix 
-                (click)="hideConfirm = !hideConfirm" 
-                [attr.aria-label]="'Hide password'" 
-                [attr.aria-pressed]="hideConfirm">
-                <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-              <mat-hint *ngIf="signInform.controls['confirmPassword'].errors?.['required']"> 
-                Password is <strong>required</strong>
-              </mat-hint>
-            </mat-form-field>
           </form>
         <button 
           mat-raised-button 
           color="primary" 
           class="mat-dialog-btn" 
           [disabled]="isButtonDisable()" 
-          (click)="authService.SignIn(userEmail.value, userPassword.value)"
+          (click)="clickContinue(userEmail.value, userPassword.value)"
         >Continue</button>
         <div class="mat-dialog-singUp">
-            <p *ngIf="!data.confirmPassword">
-              Don't nave an account?<a href="javascript:void(0)" [mat-dialog-close] ><b> Sign Up</b></a>
+            <p *ngIf="data.title == 'Log in'">
+              Don't nave an account?<a href="javascript:void(0)" (click)="onButtonClick(true)" ><b> Sign Up</b></a>
             </p>
         </div>
         <button mat-raised-button 

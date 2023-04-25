@@ -12,22 +12,27 @@ export class HeaderComponent {
   constructor(public dialog: MatDialog, private router: Router) {}
 
   openSignInDialog() {
-    this.openDialog('Log in', false);
+    this.openDialog('Log in');
   }
 
   openSignUpDialog() {
-    this.openDialog('Sign Up', true);
+    this.openDialog('Sign Up');
   }
 
-  private openDialog(title: string, confirmPassword: boolean) {
+  private openDialog(title: string) {
     const dialogInterface: DialogInterface = {
       title: title,
-      confirmPassword: confirmPassword,
     };
 
-    let dialogRef = this.dialog.open(DialogComponent, {
+    const dialogRef = this.dialog.open(DialogComponent, {
       data: dialogInterface,
       panelClass: 'custom-dialog'
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        this.openSignUpDialog()
+      }
     });
   }
 }
