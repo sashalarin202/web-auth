@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 
 
@@ -38,6 +39,7 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
     ForgotPasswordComponent,
     DashboardComponent,
     VerifyEmailComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,

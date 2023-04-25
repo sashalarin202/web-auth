@@ -38,9 +38,9 @@
           </form>
         <button mat-raised-button color="primary" class="mat-dialog-btn" [disabled]="isButtonDisable()">Continue</button>
         <div class="mat-dialog-singUp">
-            <p *ngIf="!data.confirmPassword">Don't nave an account?<a href="/"><b> Sign Up</b></a></p>
+            <p *ngIf="!data.confirmPassword">Don't nave an account?<a href="javascript:void(0)" [mat-dialog-close] ><b> Sign Up</b></a></p>
         </div>
-        <button mat-raised-button class="mat-dialog-btn mat-dialog-googleBtn">
+        <button mat-raised-button class="mat-dialog-btn mat-dialog-googleBtn" (click)="authService.GoogleAuth()" [mat-dialog-close]>
             <div class="wrapper">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="no" width="20px" height="20px">
                 <p>Continue with Google</p></div>
