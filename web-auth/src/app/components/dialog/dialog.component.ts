@@ -41,11 +41,9 @@ export class DialogComponent implements OnInit {
   }
 
   isButtonDisable() {
-    const emailErrors = this.emailControl?.errors;
-    const passwordErrors = this.passwordControl?.errors;
-    return passwordErrors?.['required'] ||
-      emailErrors?.['required'] ||
-      emailErrors?.['email'];
+    return this.passwordControl?.errors?.['required'] ||
+      this.emailControl?.errors?.['required'] ||
+      this.emailControl?.errors?.['email'];
   }
 
   clickContinue(userEmail: string, userPassword: string): void{
@@ -56,7 +54,4 @@ export class DialogComponent implements OnInit {
 
 export interface DialogInterface {
   title: string;
-}
-export interface DialogResult {
-  result: boolean;
 }
