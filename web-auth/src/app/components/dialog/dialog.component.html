@@ -7,7 +7,7 @@
         <form [formGroup]="signInform" class="example-form" >
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
-              <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+              <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email" #userEmail>
               <mat-hint *ngIf="signInform.controls['email'].errors?.['email'] && !signInform.controls['email'].hasError('required')">
                 Please enter a valid email address
               </mat-hint>
@@ -17,8 +17,15 @@
             </mat-form-field>
             <mat-form-field appearance="fill" class="example-full-width">
               <mat-label>Enter your password</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-              <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" #userPassword>
+              <button 
+                type="button" 
+                mat-icon-button 
+                matSuffix 
+                (click)="hide = !hide" 
+                [attr.aria-label]="'Hide password'" 
+                [attr.aria-pressed]="hide"
+              >
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
               <mat-hint *ngIf="signInform.controls['password'].errors?.['required']"> 
@@ -28,7 +35,12 @@
             <mat-form-field *ngIf="data.confirmPassword" appearance="fill" class="example-full-width">
               <mat-label>Confirm your password</mat-label>
               <input matInput [type]="hideConfirm ? 'password' : 'text'" formControlName="confirmPassword">
-              <button type="button" mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirm">
+              <button 
+                type="button" 
+                mat-icon-button matSuffix 
+                (click)="hideConfirm = !hideConfirm" 
+                [attr.aria-label]="'Hide password'" 
+                [attr.aria-pressed]="hideConfirm">
                 <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
               <mat-hint *ngIf="signInform.controls['confirmPassword'].errors?.['required']"> 
@@ -36,11 +48,22 @@
               </mat-hint>
             </mat-form-field>
           </form>
-        <button mat-raised-button color="primary" class="mat-dialog-btn" [disabled]="isButtonDisable()">Continue</button>
+        <button 
+          mat-raised-button 
+          color="primary" 
+          class="mat-dialog-btn" 
+          [disabled]="isButtonDisable()" 
+          (click)="authService.SignIn(userEmail.value, userPassword.value)"
+        >Continue</button>
         <div class="mat-dialog-singUp">
-            <p *ngIf="!data.confirmPassword">Don't nave an account?<a href="javascript:void(0)" [mat-dialog-close] ><b> Sign Up</b></a></p>
+            <p *ngIf="!data.confirmPassword">
+              Don't nave an account?<a href="javascript:void(0)" [mat-dialog-close] ><b> Sign Up</b></a>
+            </p>
         </div>
-        <button mat-raised-button class="mat-dialog-btn mat-dialog-googleBtn" (click)="authService.GoogleAuth()" [mat-dialog-close]>
+        <button mat-raised-button 
+          class="mat-dialog-btn mat-dialog-googleBtn" 
+          (click)="authService.GoogleAuth()" 
+          [mat-dialog-close]>
             <div class="wrapper">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="no" width="20px" height="20px">
                 <p>Continue with Google</p></div>
