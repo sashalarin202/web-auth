@@ -8,7 +8,7 @@
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
               <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email" #userEmail>
-              <mat-hint *ngIf="signInform.controls['email'].invalid">
+              <mat-hint *ngIf="signInform.get('email')?.errors && (signInform.get('email')?.touched || signInform.get('email')?.dirty)">
                 Please enter a valid email address
               </mat-hint>
               <mat-hint *ngIf="signInform.controls['email'].errors?.['required']">
