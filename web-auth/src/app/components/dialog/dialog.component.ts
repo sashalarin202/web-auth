@@ -19,8 +19,7 @@ export class DialogComponent implements OnInit {
   @Output() buttonClick = new EventEmitter<void>();
 
   onButtonClick(event: boolean) {
-    const dialogResult: boolean = true
-    this.dialogRef.close(dialogResult);
+    this.dialogRef.close(event);
   }
 
   constructor(
