@@ -7,6 +7,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,7 +17,8 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private snackBar: MatSnackBar,
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -44,7 +46,7 @@ export class AuthService {
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.snackBar.open(error.message, '', { duration: 3000 })
       });
   }
   // Sign up with email/password
@@ -58,7 +60,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.snackBar.open(error.message, '', { duration: 3000 });
       });
   }
   // Send email verfificaiton when new user sign up
@@ -77,7 +79,7 @@ export class AuthService {
         window.alert('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        window.alert(error);
+        this.snackBar.open(error.message, '', { duration: 3000 });
       });
   }
   // Returns true when user is looged in and email is verified
@@ -100,7 +102,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error);
+        this.snackBar.open(error.message, '', { duration: 3000 });
       });
   }
   /* Setting up user data when sign in with username/password, 
