@@ -8,7 +8,9 @@
             <mat-form-field class="example-full-width">
               <mat-label>Email</mat-label>
               <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email" #userEmail>
-              <mat-hint *ngIf="signInform.get('email')?.errors && (signInform.get('email')?.touched || signInform.get('email')?.dirty)">
+              <mat-hint 
+                *ngIf="getError(this.signInform)"
+              >
                 Please enter a valid email address
               </mat-hint>
               <mat-hint *ngIf="signInform.controls['email'].errors?.['required']">
@@ -33,6 +35,11 @@
               </mat-hint>
             </mat-form-field>
           </form>
+          <span 
+            *ngIf="data.title == 'Log in'" 
+            (click)="openFPdDialog()" 
+            class="mat-second-dialog"
+          >Forgot Password?</span>
         <button 
           mat-raised-button 
           color="primary" 
@@ -40,7 +47,7 @@
           [disabled]="isButtonDisable()" 
           (click)="clickContinue(userEmail.value, userPassword.value)"
         >Continue</button>
-        <div class="mat-dialog-singUp">
+        <div class="mat-second-dialog">
             <p *ngIf="data.title == 'Log in'">
               Don't nave an account?<a href="javascript:void(0)" (click)="onButtonClick(true)" ><b> Sign Up</b></a>
             </p>
@@ -55,3 +62,37 @@
         </button>
     </div>
 </div>
+
+<ng-template #forgotPassword>
+  <div class="mat-fp-dialog">
+    <div class="mat-fp-dialog-area">
+      <form [formGroup]="resetPasswordform" class="example-form">
+        <h2 class="mat-fp-dialog-text">Reset Password</h2>
+        <p class="text-center">Please enter your email address to request a password reset.</p>
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input 
+            type="email" matInput 
+            placeholder="Ex. pat@example.com" 
+            formControlName="email"
+            #forgotPassword
+          >
+          <mat-hint *ngIf="getError(this.resetPasswordform) && !resetPasswordform.controls['email'].errors?.['required']">
+            Please enter a valid email address
+          </mat-hint>
+          <mat-hint *ngIf="resetPasswordform.controls['email'].errors?.['required']">
+            Email is <strong>required</strong>
+          </mat-hint>
+        </mat-form-field>
+        <button
+          [disabled]="getError(this.resetPasswordform) || resetPasswordform.controls['email'].errors?.['required']"
+          mat-raised-button 
+          (click)="authService.ForgotPassword(forgotPassword.value)">Reset Password</button>
+    
+        <div class="redirectToLogin">
+          <span>Go back to ? <span class="mat-second-dialog" (click)="onButtonClick(true)" >Log In</span></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>

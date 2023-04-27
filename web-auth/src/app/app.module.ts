@@ -18,7 +18,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -36,7 +35,6 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     AppComponent,
     HeaderComponent,
     DialogComponent,
-    ForgotPasswordComponent,
     DashboardComponent,
     VerifyEmailComponent,
     MainPageComponent,

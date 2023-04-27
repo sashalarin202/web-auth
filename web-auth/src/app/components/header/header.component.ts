@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent, DialogInterface } from '../dialog/dialog.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(public dialog: MatDialog) {}
 
   openSignInDialog() {
     this.openDialog('Log in');

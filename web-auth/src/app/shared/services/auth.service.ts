@@ -76,7 +76,7 @@ export class AuthService {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        this.snackBar.open('Password reset email sent, check your inbox.', '', { duration: 3000 });
       })
       .catch((error) => {
         this.snackBar.open(error.message, '', { duration: 3000 });
