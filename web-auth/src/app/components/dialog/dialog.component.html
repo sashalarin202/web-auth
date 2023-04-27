@@ -49,7 +49,7 @@
         >Continue</button>
         <div class="mat-second-dialog">
             <p *ngIf="data.title == 'Log in'">
-              Don't nave an account?<a href="javascript:void(0)" (click)="onButtonClick(true)" ><b> Sign Up</b></a>
+              Don't nave an account?<a href="javascript:void(0)" (click)="openSecondDialog('Sign Up')" ><b> Sign Up</b></a>
             </p>
         </div>
         <button mat-raised-button 
@@ -90,7 +90,7 @@
           (click)="authService.ForgotPassword(forgotPassword.value)">Reset Password</button>
     
         <div class="redirectToLogin">
-          <span>Go back to ? <span class="mat-second-dialog" (click)="onButtonClick(true)" >Log In</span></span>
+          <span>Go back to ? <span class="mat-second-dialog" (click)="openSecondDialog('Log In')" >Log In</span></span>
         </div>
       </form>
     </div>

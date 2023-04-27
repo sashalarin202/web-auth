@@ -56,7 +56,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     AngularFireDatabaseModule,
     MatSnackBarModule,
   ],
-  providers: [],
+  providers: [HeaderComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

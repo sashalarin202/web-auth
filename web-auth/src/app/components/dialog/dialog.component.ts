@@ -2,6 +2,7 @@ import { Component, EventEmitter, Inject, Input, OnInit, Output, TemplateRef, Vi
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-dialog',
@@ -25,7 +26,8 @@ export class DialogComponent implements OnInit {
     private fb: FormBuilder,
     public authService: AuthService,
     public dialogRef: MatDialogRef<DialogComponent>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private headerComponent: HeaderComponent
   ) { }
 
   ngOnInit() {
@@ -50,8 +52,11 @@ export class DialogComponent implements OnInit {
      this.authService.SignIn(userEmail, userPassword)
   }
 
-  onButtonClick(event: boolean) {
+  openSecondDialog(event: string) {
     this.dialogRef.close(event);
+    if(event=='Log In'){
+      this.headerComponent.openSignInDialog();
+    }
   }
 
   getError(form:FormGroup): boolean {
