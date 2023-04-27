@@ -19,7 +19,6 @@ export class DialogComponent implements OnInit {
 
   @ViewChild('forgotPassword') secondDialogTemplate: TemplateRef<any>;
 
-  @Output() buttonClick = new EventEmitter<void>();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { title: string },
@@ -67,7 +66,7 @@ export class DialogComponent implements OnInit {
     });
     this.emailControl = this.resetPasswordform.get('email');
 
-    this.dialog.open(this.secondDialogTemplate,{
+    this.dialogRef = this.dialog.open(this.secondDialogTemplate,{
       panelClass: 'custom-dialog'
     });
   }
