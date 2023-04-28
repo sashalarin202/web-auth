@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent, DialogInterface } from '../dialog/dialog.component';
+import { DialogService } from '../dialog/dialog.service';
 
 @Component({
   selector: 'app-header',
@@ -8,30 +7,12 @@ import { DialogComponent, DialogInterface } from '../dialog/dialog.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(private dialogService: DialogService){}
+  openSignUpDialog() {
+    this.dialogService.openSignUpForm()
+  }
 
   openSignInDialog() {
-    this.openDialog('Log in');
-  }
-
-  openSignUpDialog() {
-    this.openDialog('Sign Up');
-  }
-
-  private openDialog(title: string) {
-    const dialogInterface: DialogInterface = {
-      title: title,
-    };
-
-    const dialogRef = this.dialog.open(DialogComponent, {
-      data: dialogInterface,
-      panelClass: 'custom-dialog'
-    });
-
-    dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result) {
-        this.openSignUpDialog()
-      }
-    });
+    this.dialogService.openSignInForm()
   }
 }
