@@ -2,23 +2,23 @@ section {
     display: flex;
     width: 100vw;
     background-color: rgba(130, 69, 69, 0.189);
-    justify-content: center;
+    justify-content: space-between;
   }
   
   .example-label {
     display: table-cell;
     font-size: 14px;
-    margin-left: 8px;
     min-width: 120px;
   }
   
   .example-button-row {
     display: table-cell;
     max-width: 600px;
+    margin-right: 15px;
   }
   
   .example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
+    margin: 8px;
   }
   
   .example-flex-container {
