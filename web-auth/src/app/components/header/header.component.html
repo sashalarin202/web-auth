@@ -11,6 +11,6 @@
         <button mat-raised-button routerLink="/mainPage">Recomended</button>
     </nav>
     <div class="example-button-row">
-        <button mat-raised-button (click)="openSignInDialog()">Log Out</button>
+        <button mat-raised-button (click)="authService.SignOut()">Log Out</button>
     </div>
 </ng-template>

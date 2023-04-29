@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  constructor(private dialogService: DialogService, private authService: AuthService){}
+  constructor(private dialogService: DialogService, public authService: AuthService){ console.log('header') }
 
   isLoggedIn(){
     console.log(this.authService.isLoggedIn)
