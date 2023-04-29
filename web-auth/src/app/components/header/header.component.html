@@ -1,6 +1,16 @@
 <section>
-    <div class="example-button-row">
+    <div class="example-button-row" *ngIf="isLoggedIn(); else LoggedIn">
         <button mat-raised-button (click)="openSignInDialog()">Log In</button>
         <button mat-raised-button (click)="openSignUpDialog()">Sign Up</button>
     </div>
 </section>
+
+<ng-template #LoggedIn >
+    <nav class="example-button-row navigation">
+        <button mat-raised-button routerLink="/dashboard">Profile</button>
+        <button mat-raised-button routerLink="/mainPage">Recomended</button>
+    </nav>
+    <div class="example-button-row">
+        <button mat-raised-button (click)="openSignInDialog()">Log Out</button>
+    </div>
+</ng-template>
