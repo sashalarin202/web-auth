@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { MainPageComponent } from './components/main-page/main-page.component';
+
 const routes: Routes = [
   { path: '', redirectTo: '/mainPage', pathMatch: 'full' },
   { path: 'mainPage', component: MainPageComponent },
